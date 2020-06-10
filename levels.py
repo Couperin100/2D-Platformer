@@ -2,14 +2,15 @@ import pygame
 import constants
 import platforms
 
+
 class Level(object):
     """ This is a generic super-class used to define a level.
         Create a child class for each level with level-specific
         info. """
  
     def __init__(self, player):
-        """ Constructor. Pass in a handle to player. Needed for when moving platforms
-            collide with the player. """
+        """ Constructor. Pass in a handle to player. Needed for when moving
+            platforms collide with the player. """
         self.platform_list = None
         self.enemy_list = None
          
@@ -23,7 +24,7 @@ class Level(object):
         self.enemy_list = pygame.sprite.Group()
         self.player = player
  
-    # Update everythign on this level
+    # Update everything on this level
     def update(self):
         """ Update everything in this level."""
         self.platform_list.update()
@@ -34,16 +35,16 @@ class Level(object):
  
         # Draw the background
         screen.fill(constants.BLUE)
-        screen.blit(self.background,(self.world_shift // 3,0))
-        screen.blit(self.midground,(self.world_shift * 1,570))
-        screen.blit(self.foreground,(self.world_shift * 4,650))
+        screen.blit(self.background, (self.world_shift // 3, 0))
+        screen.blit(self.midground, (self.world_shift * 1, 570))
+        screen.blit(self.foreground, (self.world_shift * 4, 650))
  
         # Draw all the sprite lists that we have
         self.platform_list.draw(screen)
         self.enemy_list.draw(screen)
 
     def shift_world(self, shift_x):
-        "When the player moves left/right and we need to scroll everything"
+        """When the player moves left/right and we need to scroll everything"""
 
         #keep track of the shift amount
         self.world_shift += shift_x
@@ -56,18 +57,21 @@ class Level(object):
  
  
 # Create platforms for the level
-class Level_01(Level):
-    """ Definition for level 1. """
+class LevelOne(Level):
+    """ Definition for level 1."""
  
     def __init__(self, player):
-        """ Create level 1. """
+        """ Create level 1."""
  
         # Call the parent constructor
         Level.__init__(self, player)
 
-        self.background = pygame.image.load("graphics/planet_background.jpg").convert()
-        self.midground = pygame.image.load("graphics/planet_mid_background1.png").convert_alpha()
-        self.foreground = pygame.image.load("graphics/planet_foreground1.png").convert_alpha()
+        self.background = pygame.image.load(
+            "graphics/planet_background.jpg").convert()
+        self.midground = pygame.image.load(
+            "graphics/planet_mid_background1.png").convert_alpha()
+        self.foreground = pygame.image.load(
+            "graphics/planet_foreground1.png").convert_alpha()
 
         self.background.scroll(-110,-110)
         self.background.set_colorkey(constants.WHITE)

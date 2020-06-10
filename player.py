@@ -17,7 +17,7 @@ class Player(pygame.sprite.Sprite):
         """ Constructor function """
  
         # Call the parent's constructor
-        super(Player,self).__init__()
+        super(Player, self).__init__()
  
         # Create an image of the block, and fill it with a color.
         # This could also be an image loaded from the disk.
@@ -31,8 +31,8 @@ class Player(pygame.sprite.Sprite):
         self.change_y = 0
 
         # Set Velocity and Acceleration
-        self.vel = vec(0,0)
-        self.acc = vec(0,0)
+        self.vel = vec(0, 0)
+        self.acc = vec(0, 0)
  
         # This holds all the images for the animated walk left/right of the player
         self.walking_frames_l = []
@@ -50,23 +50,23 @@ class Player(pygame.sprite.Sprite):
         #image = sprite_sheet.get_image(10,5,40,81)
         #image = pygame.transform.scale(image, (35,65))
         #self.walking_frames_r.append(image)
-        image = sprite_sheet.get_image(0,103,50,81)
-        image = pygame.transform.scale(image, (35,65))
+        image = sprite_sheet.get_image(0, 103, 50, 81)
+        image = pygame.transform.scale(image, (35, 65))
         self.walking_frames_r.append(image)
-        image = sprite_sheet.get_image(56,103,50,81)
-        image = pygame.transform.scale(image, (35,65))
+        image = sprite_sheet.get_image(56, 103, 50, 81)
+        image = pygame.transform.scale(image, (35, 65))
         self.walking_frames_r.append(image)
-        image = sprite_sheet.get_image(100,103,50,81)
-        image = pygame.transform.scale(image, (35,65))
+        image = sprite_sheet.get_image(100, 103, 50, 81)
+        image = pygame.transform.scale(image, (35, 65))
         self.walking_frames_r.append(image)
-        image = sprite_sheet.get_image(146,103,50,81)
-        image = pygame.transform.scale(image, (35,65))
+        image = sprite_sheet.get_image(146, 103, 50, 81)
+        image = pygame.transform.scale(image, (35, 65))
         self.walking_frames_r.append(image)
-        image = sprite_sheet.get_image(200,103,50,81)
-        image = pygame.transform.scale(image, (35,65))
+        image = sprite_sheet.get_image(200, 103, 50, 81)
+        image = pygame.transform.scale(image, (35, 65))
         self.walking_frames_r.append(image)
-        image = sprite_sheet.get_image(250,103,50,81)
-        image = pygame.transform.scale(image, (35,65))
+        image = sprite_sheet.get_image(250, 103, 50, 81)
+        image = pygame.transform.scale(image, (35, 65))
         self.walking_frames_r.append(image)
 
         # Load all the right facing images into a list
@@ -74,29 +74,29 @@ class Player(pygame.sprite.Sprite):
         #image = pygame.transform.scale(image, (35,65))
         #image = pygame.transform.flip(image,True, False)
         #self.walking_frames_l.append(image)
-        image = sprite_sheet.get_image(0,103,50,81)
-        image = pygame.transform.scale(image, (35,65))
+        image = sprite_sheet.get_image(0, 103, 50, 81)
+        image = pygame.transform.scale(image, (35, 65))
         image = pygame.transform.flip(image,True, False)
         self.walking_frames_l.append(image)
-        image = sprite_sheet.get_image(56,103,50,81)
-        image = pygame.transform.scale(image, (35,65))
-        image = pygame.transform.flip(image,True, False)
+        image = sprite_sheet.get_image(56, 103, 50, 81)
+        image = pygame.transform.scale(image, (35, 65))
+        image = pygame.transform.flip(image, True, False)
         self.walking_frames_l.append(image)
-        image = sprite_sheet.get_image(100,103,50,81)
-        image = pygame.transform.scale(image, (35,65))
-        image = pygame.transform.flip(image,True, False)
+        image = sprite_sheet.get_image(100, 103, 50, 81)
+        image = pygame.transform.scale(image, (35, 65))
+        image = pygame.transform.flip(image, True, False)
         self.walking_frames_l.append(image)
-        image = sprite_sheet.get_image(146,103,50,81)
-        image = pygame.transform.scale(image, (35,65))
-        image = pygame.transform.flip(image,True, False)
+        image = sprite_sheet.get_image(146, 103, 50, 81)
+        image = pygame.transform.scale(image, (35, 65))
+        image = pygame.transform.flip(image, True, False)
         self.walking_frames_l.append(image)
-        image = sprite_sheet.get_image(200,103,50,81)
-        image = pygame.transform.scale(image, (35,65))
-        image = pygame.transform.flip(image,True, False)
+        image = sprite_sheet.get_image(200, 103, 50, 81)
+        image = pygame.transform.scale(image, (35, 65))
+        image = pygame.transform.flip(image, True, False)
         self.walking_frames_l.append(image)
-        image = sprite_sheet.get_image(250,103,50,81)
-        image = pygame.transform.scale(image, (35,65))
-        image = pygame.transform.flip(image,True, False)
+        image = sprite_sheet.get_image(250, 103, 50, 81)
+        image = pygame.transform.scale(image, (35, 65))
+        image = pygame.transform.flip(image, True, False)
         self.walking_frames_l.append(image)
 
         # Set the image the player starts with
@@ -120,7 +120,8 @@ class Player(pygame.sprite.Sprite):
             frame = (pos // 15) % len(self.walking_frames_l)
             self.image = self.walking_frames_l[frame] 
         # See if we hit anything
-        block_hit_list = pygame.sprite.spritecollide(self, self.level.platform_list, False)
+        block_hit_list = pygame.sprite.spritecollide(
+            self, self.level.platform_list, False)
         for block in block_hit_list:
             # If we are moving right,
             # set our right side to the left side of the item we hit
@@ -134,7 +135,8 @@ class Player(pygame.sprite.Sprite):
         self.rect.y += self.change_y
  
         # Check and see if we hit anything
-        block_hit_list = pygame.sprite.spritecollide(self, self.level.platform_list, False)
+        block_hit_list = pygame.sprite.spritecollide(
+            self, self.level.platform_list, False)
         for block in block_hit_list:
  
             # Reset our position based on the top/bottom of the object.
@@ -154,43 +156,46 @@ class Player(pygame.sprite.Sprite):
             self.change_y += 2
  
         # See if we are on the ground.
-        if self.rect.y >= constants.SCREEN_HEIGHT - self.rect.height and self.change_y >= 0:
+        if self.rect.y >= constants.SCREEN_HEIGHT - self.rect.height \
+                and self.change_y >= 0:
             self.change_y = 0
             self.rect.y = constants.SCREEN_HEIGHT - self.rect.height
  
     def jump(self):
-        """ Called when user hits 'jump' button. """
+        """ Called when user hits 'jump' button."""
  
         # move down a bit and see if there is a platform below us.
         # Move down 2 pixels because it doesn't work well if we only move down
         # 1 when working with a platform moving down.
         self.rect.y += 2
-        platform_hit_list = pygame.sprite.spritecollide(self, self.level.platform_list, False)
+        platform_hit_list = pygame.sprite.spritecollide(
+            self, self.level.platform_list, False)
         self.rect.y -= 2
  
         # If it is ok to jump, set our speed upwards
-        if len(platform_hit_list) > 0 or self.rect.bottom >= constants.SCREEN_HEIGHT:
+        if len(platform_hit_list) > 0 \
+                or self.rect.bottom >= constants.SCREEN_HEIGHT:
             self.change_y = -30
  
     # Player-controlled movement:
     def go_left(self):
-        """ Called when the user hits the left arrow. """
+        """Called when the user hits the left arrow."""
         #self.change_x = -10
         self.change_x = -constants.PLAYER_ACC
         self.change_x += self.vel.x * constants.PLAYER_FRICTION
-        print self.vel.x
+        print(self.vel.x)
         #self.vel += self.change_x
         #self.pos += self.vel + 0.5 * self.change_x
         self.direction = "L"
  
     def go_right(self):
-        """ Called when the user hits the right arrow. """
+        """Called when the user hits the right arrow."""
         self.change_x = 10
         #self.acc.x = constants.PLAYER_ACC
         self.direction = "R"
  
     def stop(self):
-        """ Called when the user lets off the keyboard. """
+        """Called when the user lets off the keyboard."""
         self.change_x = 0
 
     def crouch(self):

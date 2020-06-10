@@ -20,7 +20,7 @@ def main():
  
     # Create all the levels
     level_list = []
-    level_list.append(levels.Level_01(player))
+    level_list.append(levels.LevelOne(player))
  
     # Set the current level
     current_level_no = 0
@@ -42,7 +42,7 @@ def main():
     # -------- Main Program Loop -----------
     while not done:
         for event in pygame.event.get():
-            print (event)
+            print(event)
             if event.type == pygame.QUIT:
                 done = True
  
@@ -97,6 +97,7 @@ def main():
     # Be IDLE friendly. If you forget this line, the program will 'hang'
     # on exit.
     pygame.quit()
- 
+
+
 if __name__ == "__main__":
     main()
